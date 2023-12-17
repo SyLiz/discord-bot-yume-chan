@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Client, GatewayIntentBits } = require("discord.js");
 
 const client = new Client({
@@ -16,7 +17,7 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", (message) => {
-  if (message.channelId == "1185984729183420567") {
+  if (message.channelId == `${process.env.CH_ID}`) {
     if (
       message.content.includes("twitter.com") &&
       !message.content.includes("fxtwitter.com")
@@ -35,4 +36,4 @@ client.on("messageCreate", (message) => {
   }
 });
 
-client.login(`${secrets.BOT_TOKEN}`);
+client.login(`${process.env.BOT_TOKEN}`);
